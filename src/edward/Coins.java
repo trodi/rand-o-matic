@@ -3,17 +3,17 @@ package edward;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Find the combination of coins that adds up to 374 cents. You must use 3 types of coins. You must use the same number of each type of coin.
+ * Possible coin values: 1,2,5,10,20,50 
+ * @author tmckinnon
+ *
+ */
 public class Coins {
 
 	private static final int[] coins = {1,2,5,10,20,50};
 	private static final int totalValue = 374;
 	
-	/**
-	 * Find the combination of coins that adds up to 374 cents. You must use 3 types of coins. You must use the same number of each type of coin.
-	 * Possible coin values: 1,2,5,10,20,50
-	 * 
-	 * @param args
-	 */
 	public static void main(String[] args) {
 		Set<Integer> _selectedCoins = coins();
 		printAnswer(_selectedCoins);
