@@ -1,4 +1,4 @@
-package edward;
+package puzzles;
 
 import java.util.ArrayList;
 import java.util.List;
