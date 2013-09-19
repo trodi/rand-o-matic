@@ -20,15 +20,46 @@ public class FillInTheBlank {
 
 	private static final int[] numbers = {1,2,3,4,5,6};
 	
+	private static int counter = 0;
+	
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		final List<Integer> _answer = fillInTheBlank();
 		printAnswer(_answer);
-
+		
+		final List<Integer> _fillInTheBlank_recursive = fillInTheBlank_recursive(new ArrayList<Integer>(), 0);
+		printAnswer(_fillInTheBlank_recursive);
+		System.out.println("the counter is " + counter);
 	}
 
+	private static List<Integer> fillInTheBlank_recursive(final List<Integer> pList, final int pNum) {
+		final List<Integer> _clone = new ArrayList<Integer>(pList);
+		if (_clone.contains(pNum)) {
+			return null; // invalid combination
+		}
+		if (pNum != 0) {
+			_clone.add(pNum);
+		}
+		if (_clone.size() == numbers.length) {
+			if (checkAnswer(_clone)) {
+				return _clone;
+			} else {
+				return null;
+			}
+		}
+		// continue recursion
+		List<Integer> _return = null;
+		for (int _num : numbers) {
+			_return = fillInTheBlank_recursive(_clone, _num);
+			if (_return != null) {
+				break;
+			}
+		}
+		return _return;
+	}
+	
 	private static List<Integer> fillInTheBlank() {
 		final List<Integer> _numbers = new ArrayList<Integer>();
 		for (int one : numbers) {
@@ -86,11 +117,12 @@ public class FillInTheBlank {
 		int _first = (pAnswer.get(0) * 10) + pAnswer.get(1);
 		int _second = pAnswer.get(2);
 		int _product = (pAnswer.get(3) * 100) + (pAnswer.get(4) * 10) + pAnswer.get(5);
-//		printAnswer(pAnswer);
+		printAnswer(pAnswer);
 		return _first * _second == _product;
 	}
 	
 	private static void printAnswer(final List<Integer> pAnswer) {
+		counter++;
 		final StringBuilder _string = new StringBuilder("answer: ");
 		if (pAnswer == null) {
 			_string.append("no answer found...");
