@@ -1,4 +1,4 @@
-package puzzles;
+package main.java.puzzles;
 
 import java.util.HashSet;
 import java.util.Set;

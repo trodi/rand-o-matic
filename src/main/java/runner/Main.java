@@ -1,4 +1,4 @@
-package runner;
+package main.java.runner;
 
 /**
  * @author tmckinnon
